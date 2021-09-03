@@ -1,78 +1,79 @@
-function updateProductNumber(product, price, isIncreasion){
+function updateProductNumber(product,price, isIncreasion) {
     const productInput = document.getElementById(product + '-number');
     let productNumber = productInput.value;
+    
     if (isIncreasion == true) {
-        productNumber = parseInt(productNumber) + 1;
+        productNumber= parseInt(productNumber) + 1;
     } 
-    else if(productNumber > 0) {
+    else if (productNumber > 0) {
         productNumber = parseInt(productNumber) - 1;
     }
     productInput.value = productNumber;
-    // update total
+    // update total product price
     const productTotal = document.getElementById(product + '-total');
     productTotal.innerText = productNumber * price;
 
-    // calculateTotal update
-    calculateTotal();
+    // calculateTotal
+    calculateTotal()
 };
 
-function getInputValue(product) {
-    const productInput = document.getElementById(product + '-number');
+function getInputValue(product){
+    const productInput = document.getElementById(product +'-number');
     const productNumber = parseInt(productInput.value);
     return productNumber;
 }
-getInputValue();
-function calculateTotal() {
+
+function calculateTotal(){
     const phoneTotal = getInputValue('phone') * 1219;
     const caseTotal = getInputValue('case') * 59;
     const subTotal = phoneTotal + caseTotal;
-    const tax =subTotal / 10;
+    const tax = subTotal / 10;
     const totalPrice = subTotal + tax;
-    
-    // update on html
+    // update on the html
     document.getElementById('sub-total').innerText = subTotal;
     document.getElementById('tax-amount').innerText = tax;
     document.getElementById('total-price').innerText = totalPrice;
-    
 }
-//  handle phone increase decrease event
-document.getElementById('phone-plus').addEventListener('click', function() {
-    updateProductNumber('phone',1219, true)
+  // phone plus button 
+
+document.getElementById('phone-plus').addEventListener('click', function(){
+    updateProductNumber('phone', 1219, true);
 });
+
+
+
+//  phone-minus button
 document.getElementById('phone-minus').addEventListener('click', function(){
-    updateProductNumber('phone',1219, false)
+    updateProductNumber('phone', 1219, false);
 });
 
-
-//  handle case increase decrease event
+//  case-plus button
 document.getElementById('case-plus').addEventListener('click', function(){
-    updateProductNumber('case',59, true);
-    
-});
-document.getElementById('case-minus').addEventListener('click', function(){
-    updateProductNumber('case',59, false);
+    updateProductNumber('case', 59, true);
 });
 
-// function updateCaseNumber(isIncreasion){
-//     const caseInput = document.getElementById('cade-number');
-//     let caseNumber = caseInput.value;
-//     if (isIncreasion == true) {
-//         caseNumber = parseInt(caseNumber) + 1;
-//     } 
-//     else if(caseNumber > 0) {
-//         caseNumber = parseInt(caseNumber) - 1;
-//     }
-//     caseInput.value = caseNumber;
-//     // update case total
-//     const caseTotal = document.getElementById('case-total');
-//     caseTotal.innerText = caseNumber * 59;
-// };
+
+//  case-minus button
+document.getElementById('case-minus').addEventListener('click', function() {
+    updateProductNumber('case', 59, false);
+});
 
 
-// document.getElementById('case-plus').addEventListener('click', function(){
-//     updateCaseNumber(true);
-    
-// });
-// document.getElementById('case-minus').addEventListener('click', function(){
-//     updateCaseNumber(false);
-// });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
